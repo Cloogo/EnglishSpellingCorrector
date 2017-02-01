@@ -1,0 +1,17 @@
+An English spelling corrector.
+
+Install and run:
+cd build
+../configure
+make
+cd src/core
+./SpellCorrector speling
+Do you mean "spelling"?
+
+An exercise on how to use autotools and gprof.
+With the help of gprof,i have found the hot spot:Args_get() and Hashtable_get().
+In order to deal with Hashtable_get(),i comment some codes.It proves to be right.
+As for Args_get(),it is of poor efficiency.Optimize my code!(I try to replace strchr() in Args_get() with exists()).
+
+Compared to the header i have used in EnglishSpellChecker,
+file.c changes a little,considering data encapsulation.
