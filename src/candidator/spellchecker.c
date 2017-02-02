@@ -125,8 +125,8 @@ Schecker_install(){
 
 void
 Schecker_uninstall(){
-    destroy_fixes();
-//    destroy_dict();
+//    destroy_fixes();
+    destroy_dict();
 }
 
 

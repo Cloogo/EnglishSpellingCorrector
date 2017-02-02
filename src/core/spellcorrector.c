@@ -7,6 +7,7 @@
 #include <spellchecker.h>
 #include <candidator.h>
 #include <langmod.h>
+#include <mcheck.h>
 
 char*
 max(CandList cand){
@@ -50,6 +51,8 @@ main(int argc,char* argv[]){
         fprintf(stderr,"usage:%s <wordlist>\n",argv[0]);
         exit(1);
     }
+    setenv("MALLOC_TRACE","spellcorrector_mtrace",1);
+    mtrace();
     Schecker_install();
     Langmod_build("../../res/big.txt");
     printf("Do you mean \"%s\"?\n",correct(argv[1]));
