@@ -31,7 +31,7 @@ static int trim_word_from_last(char* check,int len);
 static void
 load_dict(){
     Hashtable_init();
-    File f=File_open("../../res/american-english","r");
+    File f=File_read("../../res/american-english");
     char** words=Args_get(f->ctx,"\n",&(dict.nwords));
     for(int i=1;i<dict.nwords;i++){
         int len=to_lower(words[i],words[i]);
@@ -43,10 +43,10 @@ load_dict(){
 
 static void
 load_fixes(){
-    File f=File_open("../res/prefixes.txt","r");
+    File f=File_read("../res/prefixes.txt");
     pre.words=Args_get(f->ctx,"\n",&pre.nwords);
     File_close(f);
-    f=File_open("../res/suffixes.txt","r");
+    f=File_read("../res/suffixes.txt");
     suf.words=Args_get(f->ctx,"\n",&suf.nwords);
     File_close(f);
 }

@@ -14,14 +14,8 @@ static char* get_ctx(File f);
 static void free_ctx(File f);
 
 File 
-File_open(const char* name,const char* mode){
-    File file;
-    safer_malloc(file,sizeof(*file));
-    FILE* f=fopen(name,mode);
-    if(f==NULL){
-        report_bug("fopen(%s,%s)",name,mode);
-    }
-    file->fd=f;
+File_read(const char* name){
+    File file=File_open(name,"r");
     get_size(file);
     get_ctx(file);
     return file;
@@ -34,6 +28,18 @@ File_close(File f){
     }
     free_ctx(f);
     safer_free(f);
+}
+
+File
+File_open(const char* name,const char* mode){
+    File file;
+    safer_malloc(file,sizeof(*file));
+    FILE* f=fopen(name,mode);
+    if(f==NULL){
+        report_bug("fopen(%s,%s)",name,mode);
+    }
+    file->fd=f;
+    return file;
 }
 
 static size_t

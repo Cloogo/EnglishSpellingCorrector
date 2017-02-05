@@ -133,7 +133,7 @@ Langmod_top20(){
 
 void 
 Langmod_build(char* fpath){
-    File f=File_open(fpath,"r");
+    File f=File_read(fpath);
     for(int i=0;i<MAX_HELEM_N;i++){
         table[i]=NULL;
     }

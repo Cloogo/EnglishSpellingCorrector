@@ -9,6 +9,7 @@ typedef struct File{
     size_t size;
     char* ctx;
 }*File;
+extern File File_read(const char* name);
 extern File File_open(const char* name,const char* mode);
 extern void File_close(File f);
 #endif
